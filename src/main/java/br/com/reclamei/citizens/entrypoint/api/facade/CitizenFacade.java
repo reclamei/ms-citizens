@@ -4,15 +4,10 @@ import br.com.reclamei.citizens.core.usecase.CitizenUseCase;
 import br.com.reclamei.citizens.entrypoint.api.dto.CitizenCreateRequest;
 import br.com.reclamei.citizens.entrypoint.api.dto.CitizenResponse;
 import br.com.reclamei.citizens.entrypoint.api.mapper.CitizenApiMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
-public class CitizenFacade {
-
-    private final CitizenApiMapper citizenApiMapper;
-    private final CitizenUseCase citizenUseCase;
+public record CitizenFacade(CitizenApiMapper citizenApiMapper, CitizenUseCase citizenUseCase) {
 
     public void createCitizen(final CitizenCreateRequest request) {
         var citizenDomain = citizenApiMapper.toDomain(request);

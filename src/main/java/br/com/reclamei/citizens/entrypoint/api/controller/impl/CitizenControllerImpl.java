@@ -4,22 +4,21 @@ import br.com.reclamei.citizens.entrypoint.api.controller.CitizenController;
 import br.com.reclamei.citizens.entrypoint.api.dto.CitizenCreateRequest;
 import br.com.reclamei.citizens.entrypoint.api.dto.CitizenResponse;
 import br.com.reclamei.citizens.entrypoint.api.facade.CitizenFacade;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/citizens")
-@RequiredArgsConstructor
-public class CitizenControllerImpl implements CitizenController {
+import javax.validation.Valid;
 
-    private final CitizenFacade citizenFacade;
+@RestController("/citizens")
+public record CitizenControllerImpl(CitizenFacade citizenFacade) implements CitizenController {
 
     @Override
     @PostMapping
-    public void createCitizen(final CitizenCreateRequest request) {
+    public void createCitizen(@Valid @RequestBody final CitizenCreateRequest request) {
         citizenFacade.createCitizen(request);
     }
 

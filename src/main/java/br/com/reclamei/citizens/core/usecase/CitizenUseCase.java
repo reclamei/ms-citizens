@@ -2,17 +2,16 @@ package br.com.reclamei.citizens.core.usecase;
 
 import br.com.reclamei.citizens.core.domain.CitizenDomain;
 import br.com.reclamei.citizens.core.gateway.CitizenGateway;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-@RequiredArgsConstructor
-public class CitizenUseCase {
+import static java.util.UUID.randomUUID;
 
-    private final CitizenGateway citizenGateway;
+@Slf4j
+public record CitizenUseCase(CitizenGateway citizenGateway) {
 
     public void create(final CitizenDomain citizenDomain) {
         log.info("Creating new citizen. {}", citizenDomain);
+        citizenDomain.setId(randomUUID().toString());
         citizenGateway.save(citizenDomain);
     }
 
