@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController("/citizens")
 public record CitizenControllerImpl(CitizenFacade citizenFacade) implements CitizenController {
@@ -24,14 +25,14 @@ public record CitizenControllerImpl(CitizenFacade citizenFacade) implements Citi
 
     @Override
     @GetMapping("/{citizenId}")
-    public CitizenResponse findCitizenById(@PathVariable final String citizenId) {
-        return citizenFacade.findCitizenById(citizenId);
+    public CitizenResponse findCitizenById(@PathVariable final UUID citizenId) {
+        return citizenFacade.findCitizenById(citizenId.toString());
     }
 
     @Override
     @DeleteMapping("/{citizenId}")
-    public void deleteCitizenById(@PathVariable final String citizenId) {
-        citizenFacade.deleteCitizenById(citizenId);
+    public void deleteCitizenById(@PathVariable final UUID citizenId) {
+        citizenFacade.deleteCitizenById(citizenId.toString());
     }
 
 }
