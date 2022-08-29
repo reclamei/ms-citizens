@@ -41,7 +41,7 @@ public class CodingArchitectureTest {
 
     static final List<String> ANNOTATIONS_IGNORED = List.of("Scheduled", "Listener");
 
-    static final List<String> NAME_IGNORED = List.of("Mapper", "Consumer", "MapperImpl", "UseCase", "Impl");
+    static final List<String> NAME_IGNORED = List.of("Mapper", "Consumer", "MapperImpl", "UseCase", "Impl", "Handler");
 
     @ArchTest
     static final ArchRule noClassesShouldThrowGenericException =

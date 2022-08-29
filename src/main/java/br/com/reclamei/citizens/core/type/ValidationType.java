@@ -1,4 +1,4 @@
-package br.com.reclamei.citizens.core.validator;
+package br.com.reclamei.citizens.core.type;
 
 import lombok.Getter;
 

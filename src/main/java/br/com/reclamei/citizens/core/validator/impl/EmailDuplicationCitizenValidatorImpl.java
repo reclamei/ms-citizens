@@ -4,7 +4,7 @@ import br.com.reclamei.citizens.core.domain.CitizenDomain;
 import br.com.reclamei.citizens.core.gateway.CitizenGateway;
 import br.com.reclamei.citizens.core.validator.CitizenValidator;
 
-import static br.com.reclamei.citizens.core.validator.ValidationType.DUPLICATION;
+import static br.com.reclamei.citizens.core.type.ValidationType.DUPLICATION;
 
 public record EmailDuplicationCitizenValidatorImpl(CitizenGateway citizenGateway) implements CitizenValidator {
 

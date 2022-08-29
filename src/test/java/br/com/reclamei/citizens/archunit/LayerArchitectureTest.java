@@ -17,15 +17,18 @@ public class LayerArchitectureTest {
     static String API_LAYER_PACKAGES = "br.com.reclamei.citizens.entrypoint.api..";
     static String CORE_LAYER_PACKAGES = "br.com.reclamei.citizens.core..";
     static String DATA_PROVIDER_LAYER_PACKAGES = "br.com.reclamei.citizens.dataprovider..";
+    static String CONFIG_LAYER_PACKAGES = "br.com.reclamei.citizens.config..";
 
     @ArchTest
     static final ArchRule layer_dependencies_are_respected = layeredArchitecture()
         .layer(API_LAYER_PACKAGES).definedBy(API_LAYER_PACKAGES)
         .layer(CORE_LAYER_PACKAGES).definedBy(CORE_LAYER_PACKAGES)
         .layer(DATA_PROVIDER_LAYER_PACKAGES).definedBy(DATA_PROVIDER_LAYER_PACKAGES)
+        .layer(CONFIG_LAYER_PACKAGES).definedBy(CONFIG_LAYER_PACKAGES)
 
         .whereLayer(API_LAYER_PACKAGES).mayNotBeAccessedByAnyLayer()
         .whereLayer(DATA_PROVIDER_LAYER_PACKAGES).mayNotBeAccessedByAnyLayer()
-        .whereLayer(CORE_LAYER_PACKAGES).mayOnlyBeAccessedByLayers(API_LAYER_PACKAGES, DATA_PROVIDER_LAYER_PACKAGES);
+        .whereLayer(CONFIG_LAYER_PACKAGES).mayNotBeAccessedByAnyLayer()
+        .whereLayer(CORE_LAYER_PACKAGES).mayOnlyBeAccessedByLayers(API_LAYER_PACKAGES, DATA_PROVIDER_LAYER_PACKAGES, CONFIG_LAYER_PACKAGES);
 
 }
