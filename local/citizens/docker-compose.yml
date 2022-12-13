@@ -5,7 +5,7 @@ services:
         networks:
             - bubble
         environment:
-            MONGO_INITDB_DATABASE: cardpj-debit-authorization
+            MONGO_INITDB_DATABASE: citizens
         ports:
             - 27017:27017
         volumes:

@@ -34,15 +34,15 @@ public class CitizenController implements CitizensApi {
 
     @Override
     @DeleteMapping("/{citizenId}")
-    public ResponseEntity<Void> deleteCitizenById(@PathVariable final UUID citizenId) {
-        citizenFacade.deleteCitizenById(citizenId.toString());
+    public ResponseEntity<Void> deleteCitizenById(@PathVariable final String citizenId) {
+        citizenFacade.deleteCitizenById(citizenId);
         return ResponseEntity.status(NO_CONTENT).build();
     }
 
     @Override
     @GetMapping("/{citizenId}")
-    public ResponseEntity<CitizenResponse> findCitizenById(@PathVariable final UUID citizenId) {
-        return ResponseEntity.status(OK).body(citizenFacade.findCitizenById(citizenId.toString()));
+    public ResponseEntity<CitizenResponse> findCitizenById(@PathVariable final String citizenId) {
+        return ResponseEntity.status(OK).body(citizenFacade.findCitizenById(citizenId));
     }
 
 }

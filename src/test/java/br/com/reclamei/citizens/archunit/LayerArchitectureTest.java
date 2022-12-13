@@ -21,6 +21,7 @@ public class LayerArchitectureTest {
 
     @ArchTest
     static final ArchRule layer_dependencies_are_respected = layeredArchitecture()
+        .consideringAllDependencies()
         .layer(API_LAYER_PACKAGES).definedBy(API_LAYER_PACKAGES)
         .layer(CORE_LAYER_PACKAGES).definedBy(CORE_LAYER_PACKAGES)
         .layer(DATA_PROVIDER_LAYER_PACKAGES).definedBy(DATA_PROVIDER_LAYER_PACKAGES)

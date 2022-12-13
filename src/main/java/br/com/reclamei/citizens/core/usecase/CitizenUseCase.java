@@ -16,7 +16,6 @@ public record CitizenUseCase(CitizenGateway citizenGateway, List<CitizenValidato
     public void create(final CitizenDomain citizenDomain) {
         validateCitizen(citizenDomain);
         log.info("[CitizenUseCase] :: create :: Creating new citizen. {}", citizenDomain);
-        citizenDomain.setId(randomUUID().toString());
         citizenGateway.save(citizenDomain);
     }
 
