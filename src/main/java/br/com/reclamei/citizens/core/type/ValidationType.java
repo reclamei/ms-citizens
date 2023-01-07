@@ -10,5 +10,4 @@ public enum ValidationType {
     DUPLICATION("Duplication");
 
     private final String type;
-
 }

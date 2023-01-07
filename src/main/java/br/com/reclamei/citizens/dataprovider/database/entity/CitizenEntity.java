@@ -1,12 +1,14 @@
 package br.com.reclamei.citizens.dataprovider.database.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @Document("citizen")
 public class CitizenEntity {
 

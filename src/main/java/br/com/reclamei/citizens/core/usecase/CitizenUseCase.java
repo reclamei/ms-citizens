@@ -8,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-import static java.util.UUID.randomUUID;
-
 @Slf4j
 public record CitizenUseCase(CitizenGateway citizenGateway, List<CitizenValidator> citizenValidators) {
 
