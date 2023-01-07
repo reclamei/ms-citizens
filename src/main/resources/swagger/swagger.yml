@@ -68,7 +68,7 @@ components:
             properties:
                 name:
                     type: string
-                    example: Name1 Name2
+                    example: Harry Potter
                 cpf:
                     type: string
                     format: cpf
@@ -76,7 +76,7 @@ components:
                 email:
                     type: string
                     format: email
-                    example: email@email.email
+                    example: email@gmail.com
                 phone:
                     maxLength: 11
                     minLength: 11
@@ -84,7 +84,6 @@ components:
                     example: 11222223333
                 birth_date:
                     type: string
-                    format: date
                     example: 2000-01-01
         CitizenResponse:
             type: object
@@ -93,17 +92,16 @@ components:
                     type: string
                 name:
                     type: string
-                    example: Name1 Name2
+                    example: Harry Potter
                 cpf:
                     type: string
                     example: 11122233344
                 email:
                     type: string
-                    example: email@email.email
+                    example: email@gmail.com
                 phone:
                     type: string
                     example: 11222223333
                 birth_date:
                     type: string
-                    format: date
                     example: 2000-01-01
