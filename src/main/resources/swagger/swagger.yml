@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+    title: ms-citizens
+    version: v0
+servers:
+    -   url: http://localhost:8080
+paths:
+    /citizens:
+        post:
+            tags:
+                - citizens
+            operationId: createCitizen
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CitizenCreateRequest"
+                required: true
+            responses:
+                '201':
+                    description: The citizen was created successfully
+                '400':
+                    description: Error creating the citizen
+        get:
+            tags:
+                - citizens
+            operationId: findCitizenById
+            parameters:
+                -   name: citizenId
+                    in: path
+                    required: true
+                    schema:
+                        type: string
+            responses:
+                '200':
+                    description: Citizen was found
+                    content:
+                        application/json:
+                            schema:
+                                "$ref": "#/components/schemas/CitizenResponse"
+                '404':
+                    description: Citizen was not found
+        delete:
+            tags:
+                - citizens
+            operationId: deleteCitizenById
+            parameters:
+                -   name: citizenId
+                    in: path
+                    required: true
+                    schema:
+                        type: string
+            responses:
+                '204':
+                    description: Citizen was successfully deleted
+                '404':
+                    description: Citizen was not found
+components:
+    schemas:
+        CitizenCreateRequest:
+            required:
+                - birth_date
+                - cpf
+                - email
+                - name
+                - phone
+            type: object
+            properties:
+                name:
+                    type: string
+                    example: Harry Potter
+                cpf:
+                    type: string
+                    format: cpf
+                    example: 11122233344
+                email:
+                    type: string
+                    format: email
+                    example: email@gmail.com
+                phone:
+                    maxLength: 11
+                    minLength: 11
+                    type: string
+                    example: 11222223333
+                birth_date:
+                    type: string
+                    example: 2000-01-01
+        CitizenResponse:
+            type: object
+            properties:
+                id:
+                    type: string
+                name:
+                    type: string
+                    example: Harry Potter
+                cpf:
+                    type: string
+                    example: 11122233344
+                email:
+                    type: string
+                    example: email@gmail.com
+                phone:
+                    type: string
+                    example: 11222223333
+                birth_date:
+                    type: string
+                    example: 2000-01-01

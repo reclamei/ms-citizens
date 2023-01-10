@@ -1,0 +1,20 @@
+services:
+    citizens.mongo:
+        container_name: citizens.mongo
+        image: mongo:latest
+        networks:
+            - bubble
+        environment:
+            MONGO_INITDB_DATABASE: citizens
+        ports:
+            - 27017:27017
+        volumes:
+            - ./mongo:/docker-entrypoint-initdb.d
+
+networks:
+    bubble:
+        name: bubble
+        driver: bridge
+        ipam:
+            config:
+                -   subnet: 10.0.0.0/16
