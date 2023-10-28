@@ -1,4 +1,6 @@
-server.port: 8080
+server:
+    port: 8080
+    forward-headers-strategy: framework
 spring:
     application:
         name: ms-citizens
@@ -12,3 +14,6 @@ eureka:
     client:
         serviceUrl:
             defaultZone: ${EUREKA_SERVICE_URL}/eureka
+springdoc:
+    cache:
+        disabled: true
